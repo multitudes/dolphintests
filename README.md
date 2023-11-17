@@ -47,3 +47,10 @@ ALL TESTS PASSED
 Tests run: 9
 zbonus_tests PASS
 ```
+
+## Acknoledgements
+I took inspiration from the debugging and test tools found in Zed Shaw "learn C the hard way" book and tutorial! Thank you Zed!
+
+## Bugs and suggestions
+They are always welcome. Please file under issues. :)
+
