@@ -27,7 +27,7 @@ fclean: clean
 
 re: fclean tests
 
-NAME_BONUS=libft_bonus.a
+NAME_BONUS=../libft_bonus.a
 
 TEST_SRC= part1_tests.c part2_tests.c
 TEST_SRC_BONUS+= zbonus_tests.c
@@ -35,7 +35,6 @@ TESTS=$(patsubst %.c,%,$(TEST_SRC))
 TESTS_BONUS=$(patsubst %.c,%,$(TEST_SRC_BONUS))
 
 bonus: update tests_bonus 
-
 
 .PHONY: tests tests_bonus
 tests: LDLIBS += $(NAME)
