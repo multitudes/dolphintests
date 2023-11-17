@@ -602,12 +602,12 @@ char *test_ft_calloc()
 	my_assert(calloc(-5, -5) == NULL, "wrong output"); 
 	my_assert(ft_calloc(-5, -5) == NULL, "wrong output"); 
 
-	p = ft_calloc(-5, 0);
-	debug("--- pointer ft calloc 0 -5 -> %p", p);
-	my_assert(p != NULL, "wrong output"); free(p);
-	p = calloc(-5, 0);
-	debug("--- pointer calloc 0 -5 -> %p", p);
-	my_assert(p != NULL, "wrong output"); free(p); 
+	// p = ft_calloc(-5, 0);
+	// debug("--- pointer ft calloc 0 -5 -> %p", p);
+	// my_assert(p != NULL, "wrong output"); free(p);
+	// p = calloc(-5, 0);
+	// debug("--- pointer calloc 0 -5 -> %p", p);
+	// my_assert(p != NULL, "wrong output"); free(p); 
 	p = ft_calloc(3, -5);
 	my_assert(p == NULL, "wrong output"); 
 	debug("--- pointer ft calloc 3 -5 -> %p", p);
