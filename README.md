@@ -48,6 +48,9 @@ Tests run: 9
 zbonus_tests PASS
 ```
 
+This is a work in progress and you are reading version 0. To work you need to be in a subdirectory of your libft project.
+Also it assumes that the name of your library is libft.a and libft_bonus.a if the bonus files are compiled together.
+
 ## Acknoledgements
 I took inspiration from the debugging and test tools found in Zed Shaw "learn C the hard way" book and tutorial! Thank you Zed!
 
