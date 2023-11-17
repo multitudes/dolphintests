@@ -73,7 +73,6 @@ char *test_ft_isprint()
 	my_assert(ft_isprint(126) == 1, "Output shd be one");
 	my_assert(ft_isprint(50) == 1, "Output shd be one");
 
-
 	my_assert(ft_isprint(31) == 0, "Output shd be zero");
 	my_assert(ft_isprint(127) == 0, "Output shd be zero");
 	my_assert(ft_isprint(255) == 0, "Output shd be zero");
@@ -89,10 +88,8 @@ char *test_ft_strlen()
 	return NULL;
 }
 
-//void	*ft_memset(void *b, int c, size_t len);
 char *test_ft_memset()
 {
-//	my_assert(ft_memset("hello", 55, 5) == 5, "Output shd be 5");
 	char b[6] = "hello";
 	ft_memset((void *)b, 55, 5);
 	my_assert(ft_strncmp(b, "77777", 5) == 0, "Output shd be 0");
@@ -103,7 +100,6 @@ char *test_ft_memset()
 
 char *test_ft_bzero()
 {
-	//	my_assert(ft_memset("hello", 55, 5) == 5, "Output shd be 5");
 	char b[6] = "hello";
 	ft_bzero((void *)b, 4);
 	for (int i = 0; i < 4; i++)
@@ -132,7 +128,6 @@ char *test_ft_memcpy()
 // tested with overlapping strings
 char *test_ft_memmove()
 {
-	//	my_assert(ft_memset("hello", 55, 5) == 5, "Output shd be 5");
 	char dst[11] = "helloworld";
 	char *src = (dst+3);
 	char dst2[11] = "helloworld";
@@ -154,7 +149,6 @@ char *test_ft_memmove()
  */
 char *test_ft_strlcpy()
 {
-	//	my_assert(ft_memset("hello", 55, 5) == 5, "Output shd be 5");
 	char dst[6] = "hello";
 	char src[6] = "world";
 	size_t n = 6;
@@ -197,18 +191,6 @@ char *test_ft_strlcpy()
 	debug("====strlcpy with len 3 gives %d! \n",res6);
 	debug("====after strlcpy dst is %s and src %s \n",dst6, src6);
 	my_assert(res6 == 5, "Output shd be still 5 like src length even with dstlen 3");
-	
-	// char src[] = "coucou";
-	// char dest[10]; memset(dest, 'A', 10);
-	// /* 1 */  my_assert(ft_strlcpy(dest, src, 0) == strlen(src) && dest[0] == 'A'); 
-	// /* 2 */  my_assert(ft_strlcpy(dest, src, 1) == strlen(src) && dest[0] == 0 && dest[1] == 'A'); 
-	// /* 3 */  my_assert(ft_strlcpy(dest, src, 2) == strlen(src) && dest[0] == 'c' && dest[1] == 0  && dest[2] == 'A'); 
-	// /* 4 */  my_assert(strlcpy(dest, src, -1) == strlen(src) && !strcmp(src, dest) && dest[strlen(src) + 1] == 'A');  memset(dest, 'A', 10);
-	// /* 5 */  my_assert(ft_strlcpy(dest, src, 6) == strlen(src) && !memcmp(src, dest, 5) && dest[5] == 0);  memset(dest, 'A', 10);
-	// /* 6 */  my_assert(ft_strlcpy(dest, src, 7) == strlen(src) && !memcmp(src, dest, 7));  memset(dest, 'A', 10);
-	// /* 7 */  my_assert(ft_strlcpy(dest, src, 8) == strlen(src) && !memcmp(src, dest, 7));  memset(dest, 'A', 10);
-	// /* 8 */  my_assert(ft_strlcpy(dest, "", 42) == 0 && !memcmp("", dest, 1));  memset(dest, 0, 10);
-	// /* 9 */  my_assert(ft_strlcpy(dest, "1", 0) == 1 && dest[0] == 0);  memset(dest, 'A', 10);
 	
 	return NULL;
 }
@@ -349,11 +331,11 @@ char *test_ft_strchr()
 	my_assert(ft_strncmp(res4, "llo", 3) == 0, "wrong output");
 	
 	char s1[] = "tripouille";
-	/* 1 */  my_assert(ft_strchr(s1, 't') == s1, "wrong output");  
-	/* 2 */  my_assert(ft_strchr(s1, 'l') == s1 + 7, "wrong output");  
-	/* 3 */  my_assert(ft_strchr(s1, 'z') == 0, "wrong output");  
-	/* 4 */  my_assert(ft_strchr(s1, 0) == s1 + strlen(s1), "wrong output");  
-	/* 5 */  my_assert(ft_strchr(s1, 't' + 256) == s1, "wrong output");  
+	my_assert(ft_strchr(s1, 't') == s1, "wrong output");  
+	my_assert(ft_strchr(s1, 'l') == s1 + 7, "wrong output");  
+	my_assert(ft_strchr(s1, 'z') == 0, "wrong output");  
+	my_assert(ft_strchr(s1, 0) == s1 + strlen(s1), "wrong output");  
+	my_assert(ft_strchr(s1, 't' + 256) == s1, "wrong output");  
 	return NULL;
 }
 
@@ -378,15 +360,15 @@ char *test_ft_strrchr()
 	char s1[] = "tripouille";
 	char s2[] = "ltripouiel";
 	char s3[] = "";
-	/* 1 */  my_assert(ft_strrchr(s1, 't') == s1, "wrong output");  
-	/* 2 */  my_assert(ft_strrchr(s1, 'l') == s1 + 8, "wrong output");  
-	/* 3 */  my_assert(ft_strrchr(s2, 'l') == s2 + 9, "wrong output");  
-	/* 4 */  my_assert(ft_strrchr(s1, 'z') == NULL, "wrong output");  
-	/* 5 */  my_assert(ft_strrchr(s1, 0) == s1 + strlen(s1), "wrong output");  
-	/* 6 */  my_assert(ft_strrchr(s1, 't' + 256) == s1, "wrong output");  
+	my_assert(ft_strrchr(s1, 't') == s1, "wrong output");  
+	my_assert(ft_strrchr(s1, 'l') == s1 + 8, "wrong output");  
+	my_assert(ft_strrchr(s2, 'l') == s2 + 9, "wrong output");  
+	my_assert(ft_strrchr(s1, 'z') == NULL, "wrong output");  
+	my_assert(ft_strrchr(s1, 0) == s1 + strlen(s1), "wrong output");  
+	my_assert(ft_strrchr(s1, 't' + 256) == s1, "wrong output");  
 	char * empty = (char*)calloc(1, 1);
-	/* 7 aperez-b */  my_assert(ft_strrchr(empty, 'V') == NULL, "wrong output"); free(empty);  
-	/* 8 */  my_assert(ft_strrchr(s3, 0) == s3, "wrong output");  
+	my_assert(ft_strrchr(empty, 'V') == NULL, "wrong output"); free(empty);  
+	my_assert(ft_strrchr(s3, 0) == s3, "wrong output");  
 	
 	return NULL;
 }

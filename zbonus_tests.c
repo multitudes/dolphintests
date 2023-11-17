@@ -6,7 +6,6 @@
 
 #include "../_bonus.h"
 
-static t_list *list = NULL;
 char *test1 = "hello world!";
 char *test2 = "Another hello world!";
 char *test3 = "A third hello world!";
@@ -199,7 +198,7 @@ char *test_ft_lstclear()
 	int count = ft_lstsize(l);
 	debug("==== counting the list now %d =====  \n", count);
 	ft_lstclear(&l, del);
-	count = ft_lstsize(list);
+	count = ft_lstsize(l);
 	debug("==== counting the empty list now %d =====  \n", count);
 	my_assert(count == 0, "list not empty");
 	my_assert(l == NULL, "list pointer not freed");

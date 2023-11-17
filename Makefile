@@ -23,7 +23,7 @@ clean:
 
 fclean: clean
 	@echo
-	@echo "==================\n"
+	@echo "======Already fxxxxxx clean============\n"
 
 re: fclean tests
 
@@ -45,7 +45,7 @@ tests_bonus: LDLIBS += $(NAME_BONUS)
 tests_bonus: $(TESTS_BONUS)
 	sh ./runtests.sh
 
-#dont have valgrind on mac so need to test this on linux
+#will not work on mac so need to test this on linux
 valgrind:
 	@echo
 	@echo "==================\nLaunching valgrind..."
