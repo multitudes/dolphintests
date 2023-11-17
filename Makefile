@@ -5,7 +5,10 @@ NAME=../libft.a
 LDLIBS=-lm -lbsd
 	
 # the target build
-all: tests 
+all: update tests 
+
+update:
+	@git pull
 
 clean:
 	@echo ""
@@ -31,7 +34,7 @@ TEST_SRC_BONUS+= zbonus_tests.c
 TESTS=$(patsubst %.c,%,$(TEST_SRC))
 TESTS_BONUS=$(patsubst %.c,%,$(TEST_SRC_BONUS))
 
-bonus: tests_bonus 
+bonus: update tests_bonus 
 
 
 .PHONY: tests tests_bonus
