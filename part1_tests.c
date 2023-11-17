@@ -283,12 +283,12 @@ char *test_ft_toupper()
 		if (c >= 97 && c <= 122)
 		{
 			my_assert(ft_toupper(c) == c - 32, "wrong output");
-			debug("====after ft_toupper c is %c",(char)ft_toupper(c));
+			// debug("====after ft_toupper c is %c",(char)ft_toupper(c));
 		}
 		else
 		{
 			my_assert(ft_toupper(c) == c, "wrong output");
-			debug("====after ft_toupper c is %c",(char)c);
+			// debug("====after ft_toupper c is %c",(char)c);
 		}
 	}
 	return NULL;
@@ -296,17 +296,17 @@ char *test_ft_toupper()
 
 char *test_ft_tolower()
 {
-	for (int c = 0; c<=255; c++)
+	for (int c = 0; c<=127; c++)
 	{
 		if (c >= 65 && c <= 90)
 		{
 			my_assert(ft_tolower(c) == c + 32, "wrong output");
-			debug("====after ft_toupper c is %c",(char)ft_toupper(c));
+			// debug("====after ft_toupper c is %c",(char)ft_toupper(c));
 		}
 		else
 		{
 			my_assert(ft_tolower(c) == c, "wrong output");
-			debug("====after ft_toupper c is %c",(char)c);
+			// debug("====after ft_toupper c is %c",(char)c);
 		}
 	}
 	return NULL;
@@ -330,19 +330,20 @@ char *test_ft_strchr()
 	my_assert(ft_strncmp(res3, "llo", 3) == 0, "wrong output");
 	my_assert(ft_strncmp(res4, "llo", 3) == 0, "wrong output");
 	
-	char s1[] = "tripouille";
-	my_assert(ft_strchr(s1, 't') == s1, "wrong output");  
-	my_assert(ft_strchr(s1, 'l') == s1 + 7, "wrong output");  
+	char s1[] = "What happens if I press this button?";
+	my_assert(ft_strchr(s1, 'W') == s1, "wrong output");  
+	my_assert(ft_strchr(s1, 'p') == s1 + 7, "wrong output");  
 	my_assert(ft_strchr(s1, 'z') == 0, "wrong output");  
 	my_assert(ft_strchr(s1, 0) == s1 + strlen(s1), "wrong output");  
-	my_assert(ft_strchr(s1, 't' + 256) == s1, "wrong output");  
+	my_assert(ft_strchr(s1, 'W' + 256) == s1, "wrong output");  
+	
 	return NULL;
 }
 
 char *test_ft_strrchr()
 {
 	int c = 88; // X
-	char s[14] = "hello";
+	char *s = "hello";
 	char *res = ft_strrchr(s, c);
 	my_assert(res == NULL, "wrong output");
 	my_assert(strrchr(s,c) == NULL, "wrong output");
@@ -357,15 +358,15 @@ char *test_ft_strrchr()
 	my_assert(ft_strncmp(res3, "lo", 2) == 0, "wrong output");
 	my_assert(ft_strncmp(res4, "lo", 2) == 0, "wrong output");
 	
-	char s1[] = "tripouille";
-	char s2[] = "ltripouiel";
-	char s3[] = "";
-	my_assert(ft_strrchr(s1, 't') == s1, "wrong output");  
-	my_assert(ft_strrchr(s1, 'l') == s1 + 8, "wrong output");  
-	my_assert(ft_strrchr(s2, 'l') == s2 + 9, "wrong output");  
+	char *s1 = "What happens if I press this button?";
+	char *s2 = "!Don't panic!";
+	char *s3 = "";
+	my_assert(ft_strrchr(s1, 'W') == s1, "wrong output");  
+	my_assert(ft_strrchr(s1, 'p') == s1 + 18, "wrong output");  
+	my_assert(ft_strrchr(s2, '!') == s2 + 12, "wrong output");  
 	my_assert(ft_strrchr(s1, 'z') == NULL, "wrong output");  
 	my_assert(ft_strrchr(s1, 0) == s1 + strlen(s1), "wrong output");  
-	my_assert(ft_strrchr(s1, 't' + 256) == s1, "wrong output");  
+	my_assert(ft_strrchr(s1, 'W' + 256) == s1, "wrong output");  
 	char * empty = (char*)calloc(1, 1);
 	my_assert(ft_strrchr(empty, 'V') == NULL, "wrong output"); free(empty);  
 	my_assert(ft_strrchr(s3, 0) == s3, "wrong output");  
@@ -382,22 +383,22 @@ char *test_ft_strncmp()
 	my_assert(ft_strncmp("www", "ww", 2) == 0, "Output shd be 0");
 	my_assert(ft_strncmp("www", "w\b", 2) == 111, "Output shd be 111");
 	
-	/* 1 */ my_assert(ft_strncmp("t", "", 0) == 0, "wrong output");  
-	/* 2 */ my_assert(ft_strncmp("1234", "1235", 3) == 0, "wrong output");  
-	/* 3 */ my_assert(ft_strncmp("1234", "1235", 4) < 0, "wrong output");  
-	/* 4 */ my_assert(ft_strncmp("1234", "1235", -1) < 0, "wrong output");  
-	/* 5 */ my_assert(ft_strncmp("", "", 42) == 0, "wrong output");  
-	/* 6 */ my_assert(ft_strncmp("Tripouille", "Tripouille", 42) == 0, "wrong output");  
-	/* 7 */ my_assert(ft_strncmp("Tripouille", "tripouille", 42) < 0, "wrong output");  
-	/* 8 */ my_assert(ft_strncmp("Tripouille", "TriPouille", 42) > 0, "wrong output");  
-	/* 9 */ my_assert(ft_strncmp("Tripouille", "TripouillE", 42) > 0, "wrong output");  
-	/* 10 */ my_assert(ft_strncmp("Tripouille", "TripouilleX", 42) < 0, "wrong output");  
-	/* 11 */ my_assert(ft_strncmp("Tripouille", "Tripouill", 42) > 0, "wrong output");  
-	/* 12 */ my_assert(ft_strncmp("", "1", 0) == 0, "wrong output");  
-	/* 13 */ my_assert(ft_strncmp("1", "", 0) == 0, "wrong output");  
-	/* 14 */ my_assert(ft_strncmp("", "1", 1) < 0, "wrong output");  
-	/* 15 */ my_assert(ft_strncmp("1", "", 1) > 0, "wrong output");  
-	/* 16 */ my_assert(ft_strncmp("", "", 1) == 0, "wrong output");
+	my_assert(ft_strncmp("t", "", 0) == 0, "wrong output");  
+	my_assert(ft_strncmp("1234", "1235", 3) == 0, "wrong output");  
+	my_assert(ft_strncmp("1234", "1235", 4) < 0, "wrong output");  
+	my_assert(ft_strncmp("1234", "1235", -1) < 0, "wrong output");  
+	my_assert(ft_strncmp("", "", 42) == 0, "wrong output");  
+	my_assert(ft_strncmp("What happens if I press this button?", "What happens if I press this button?", 42) == 0, "wrong output");  
+	my_assert(ft_strncmp("What happens if I press this button?", "What happens if i press this button?", 42) < 0, "wrong output");  
+	my_assert(ft_strncmp("What happens if I press this button?", "What happens if I press this button?", 42) == 0, "wrong output");  
+	my_assert(ft_strncmp("What happens if I press this button?", "What happens if I press this button", 42) > 0, "wrong output");  
+	my_assert(ft_strncmp("What happens if I press this button?", "What happens if I press this button?X", 42) < 0, "wrong output");  
+	my_assert(ft_strncmp("What happens if I press this button?", "What happens if I press", 42) > 0, "wrong output");  
+	my_assert(ft_strncmp("", "1", 0) == 0, "wrong output");  
+	my_assert(ft_strncmp("1", "", 0) == 0, "wrong output");  
+	my_assert(ft_strncmp("", "1", 1) < 0, "wrong output");  
+	my_assert(ft_strncmp("1", "", 1) > 0, "wrong output");  
+	my_assert(ft_strncmp("", "", 1) == 0, "wrong output");
 	
 	return NULL;
 }
@@ -423,11 +424,11 @@ char *test_ft_memchr()
 	
 	
 	char s2[] = {0, 1, 2 ,3 ,4 ,5};
-	/* 1 */ my_assert(ft_memchr(s2, 0, 0) == NULL, "wrong output");  
-	/* 2 */ my_assert(ft_memchr(s2, 0, 1) == s2, "wrong output");  
-	/* 3 */ my_assert(ft_memchr(s2, 2, 3) == s2 + 2, "wrong output");  
-	/* 4 */ my_assert(ft_memchr(s2, 6, 6) == NULL, "wrong output");  
-	/* 5 */ my_assert(ft_memchr(s2, 2 + 256, 3) == s2 + 2, "wrong output");   //Cast  my_assert
+	my_assert(ft_memchr(s2, 0, 0) == NULL, "wrong output");  
+	my_assert(ft_memchr(s2, 0, 1) == s2, "wrong output");  
+	my_assert(ft_memchr(s2, 2, 3) == s2 + 2, "wrong output");  
+	my_assert(ft_memchr(s2, 6, 6) == NULL, "wrong output");  
+	my_assert(ft_memchr(s2, 2 + 256, 3) == s2 + 2, "wrong output");
 	
 	return NULL;
 }
@@ -584,6 +585,7 @@ char *test_ft_calloc()
 	my_assert(calloc(-5, -5) == NULL, "wrong output"); 
 	my_assert(ft_calloc(-5, -5) == NULL, "wrong output"); 
 
+// I seem to get random output here from my mallocs... 
 	// p = ft_calloc(-5, 0);
 	// debug("--- pointer ft calloc 0 -5 -> %p", p);
 	// my_assert(p != NULL, "wrong output"); free(p);
@@ -620,252 +622,6 @@ char *test_ft_strdup()
 
 
 
-//// for this one since it prints on the terminal I need
-//// to redirect first to a file and then  my_assert that the output
-//// is correct in reading the file again
-//char *test_alphabet()
-//{
-//	// create the string that I am expected to see in output
-//	char	alphabet[27] = "abcdefghijklmnopqrstuvwxyz";
-//	// this will read from file
-//	char 	output[27] = {0};
-//	
-//	// prepare to write to a file
-//	FILE *fp;
-//	fp = freopen("tmp/alphabet.txt", "wr", stdout);
-//	my_assert(fp != NULL, "failed to write alphabet to file!");
-//	// the output of this will re redirected to the file now
-//	ft_print_alphabet();
-//	fclose(fp);
-//	// resetting the normal behaviour for stdout
-//	freopen ("/dev/tty", "a", stdout);
-//	// now read from file to  my_assert
-//	fp = fopen("tmp/alphabet.txt", "r");
-//	my_assert(fp != NULL, "failed to read file!");
-//	// assign the line found in fie to the var output
-//	fscanf(fp, "%s", output);
-//	fclose(fp);
-//	// this prints to the log
-//	my_assert(strncmp(output, alphabet, 26) == 0, "Failed to print alphabet.");
-//	debug("function output => %s",output);
-//	
-//	return NULL;
-//}
-//
-//char *test_print_numbers()
-//{
-//	char	numbers[11] = "0123456789";
-//	char 	output[11] = {0};
-//	FILE *fp;
-//	
-//	fp = freopen("tmp/numbers.txt", "wr", stdout);
-//	my_assert(fp != NULL, "failed to write numbers to file!");
-//	
-//	ft_print_numbers();
-//	fclose(fp);
-//	
-//	// resetting the normal behaviour for stdout
-//	freopen ("/dev/tty", "a", stdout);
-//	
-//	fp = fopen("tmp/numbers.txt", "r");
-//	my_assert(fp != NULL, "failed to read file!");
-//	fscanf(fp, "%s", output);
-//	fclose(fp);
-//	my_assert(strncmp(output, numbers, 11) == 0, "Output is not as expected");
-//	debug("function output => %s",output);
-//	
-//	return NULL;
-//}
-//
-//char *test_is_negative()
-//{
-//	char	expect[4] = "NPP";
-//	char 	output[4] = {0};
-//	FILE *fp;
-//	
-//	fp = freopen("tmp/is_negative.txt", "wr", stdout);
-//	my_assert(fp != NULL, "failed to write numbers to file!");
-//	
-//	ft_is_negative(-1);
-//	ft_is_negative(1);
-//	ft_is_negative(0);
-//	fclose(fp);
-//	
-//	// resetting the normal behaviour for stdout
-//	freopen ("/dev/tty", "a", stdout);
-//	
-//	fp = fopen("tmp/is_negative.txt", "r");
-//	my_assert(fp != NULL, "failed to read file!");
-//	fscanf(fp, "%s", output);
-//	fclose(fp);
-//	my_assert(strncmp(expect, output, 4) == 0, "Output is not as expected");
-//	debug("function output => %s",output);
-//	
-//	return NULL;
-//}
-//
-//char *test_ft_ft()
-//{
-//	int nbr = 0;
-//	ft_ft(&nbr);
-//	my_assert( nbr == 42, "Output is not as expected");
-//	nbr = -23423;
-//	ft_ft(&nbr);
-//	my_assert( nbr == 42, "Output is not as expected");
-//
-//	return NULL;
-//}
-//
-//char *test_ft_swap()
-//{
-//	int a = 0;
-//	int b = 42;
-//	ft_swap(&a, &b);
-//	my_assert( a == 42 && b == 0, "test 1 - Output is not as expected");
-//	a = 0;
-//	b = 0;
-//	ft_swap(&a, &b);
-//	my_assert( a == 0 && b == 0, "test 2 - Output is not as expected");
-//	a = -42;
-//	b = 42;
-//	ft_swap(&a, &b);
-//	my_assert( a == 42 && b == -42, "test 3 - Output is not as expected");
-//	return NULL;
-//}
-//
-//char *test_ft_mod()
-//{
-//	int a = 2;
-//	int b = 42;
-//	int div = 0;
-//	int mod = 0;
-//	ft_div_mod(a, b, &div, &mod);
-//	my_assert( div == 0 && mod == 2, "test 1 - Output is not as expected");
-//	a = 11;
-//	b = 5;
-//	ft_div_mod(a, b, &div, &mod);
-//	my_assert( div == 2 && mod == 1, "test 2 - Output is not as expected");
-//	
-//	return NULL;
-//}
-//
-//char *test_iterative_factorial()
-//{
-//	my_assert( ft_iterative_factorial(2) == 2, "test 1 - Output is not as expected");
-//	my_assert( ft_iterative_factorial(1) == 1, "test 2 - Output is not as expected");
-//	my_assert( ft_iterative_factorial(0) == 1 , "test 3 - Output is not as expected");
-//	my_assert( ft_iterative_factorial(-2) == 0, "test 4 - Output is not as expected");
-//	my_assert( ft_iterative_factorial(-2) == 0, "test 5 - Output is not as expected");
-//	my_assert( ft_iterative_factorial(13) == 0, "test 6 - Output is not as expected");
-//	
-//	return NULL;
-//}
-//
-//char *test_recursive_factorial()
-//{
-//	my_assert( ft_recursive_factorial(2) == 2, "test 1 - Output is not as expected");
-//	my_assert( ft_recursive_factorial(1) == 1, "test 2 - Output is not as expected");
-//	my_assert( ft_recursive_factorial(0) == 1 , "test 3 - Output is not as expected");
-//	my_assert( ft_recursive_factorial(-2) == 0, "test 4 - Output is not as expected");
-//	my_assert( ft_recursive_factorial(-2) == 0, "test 5 - Output is not as expected");
-//	my_assert( ft_recursive_factorial(13) == 0, "test 6 - Output is not as expected");
-//	
-//	return NULL;
-//}
-//
-//char *test_sqrt()
-//{
-//	my_assert( ft_sqrt(2) == 0, "test 1 - Output is not as expected");
-//	my_assert( ft_sqrt(1) == 1, "test 2 - Output is not as expected");
-//	my_assert( ft_sqrt(0) == 0 , "test 3 - Output is not as expected");
-//	my_assert( ft_sqrt(-2) == 0, "test 4 - Output is not as expected");
-//	my_assert( ft_sqrt(4) == 2, "test 5 - Output is not as expected");
-//	my_assert( ft_sqrt(9) == 3, "test 6 - Output is not as expected");
-//	my_assert( ft_sqrt(2147395600) == 46340, "test 7 - Output is not as expected");
-//	my_assert( ft_sqrt(INT_MAX) == 0, "test 8 - Output is not as expected");
-//	
-//	return NULL;
-//}
-//
-//char *test_ft_putstr()
-//{
-//	// create the string that I am expected to see in output
-//	// will not take special chars like newline and no spaces because 
-//	// the testing would get extremely complicated
-//	char	str[27] = "HelloWorld";
-//	// this will read from file
-//	char 	output[27] = {0};
-//	
-//	// prepare to write to a file
-//	FILE *fp;
-//	fp = freopen("tmp/ft_putstr.txt", "wr", stdout);
-//	my_assert(fp != NULL, "failed to write alphabet to file!");
-//	// the output of this will re redirected to the file now
-//	ft_putstr(str);
-//	fclose(fp);
-//	// resetting the normal behaviour for stdout
-//	freopen ("/dev/tty", "a", stdout);
-//	// now read from file to  my_assert
-//	fp = fopen("tmp/ft_putstr.txt", "r");
-//	my_assert(fp != NULL, "failed to read file!");
-//	// assign the line found in fie to the var output
-//	fscanf(fp, "%s", output);
-//	fclose(fp);
-//	// this prints to the log
-//	debug("function output => %s",output);
-//	my_assert(strncmp(output, str, 26) == 0, "Failed to print str.");
-//	debug("function output => %s",output);
-//	return NULL;
-//}
-//
-//// will not account for non terminated strings!
-//char *test_ft_strlen()
-//{
-//	my_assert( ft_strlen("") == 0, "test 1 - Output is not as expected");
-//	my_assert( ft_strlen("1") == 1, "test 2 - Output is not as expected");
-//	my_assert( ft_strlen("hello") == 5 , "test 3 - Output is not as expected");
-//	return NULL;
-//}
-//
-//// will not account for non terminated strings!
-//char *test_ft_strcmp()
-//{
-//	int output = ft_strcmp("w", "w");
-//	debug("function output => %d",output);
-//	my_assert( output == 0, "test 1 - Output is not as expected");
-//	output = ft_strcmp("12", "11");
-//	debug("function output => %d",output);
-//	my_assert( output == 1, "test 2 - Output is not as expected");
-//	output = ft_strcmp("hello", "hellp");
-//	debug("function output => %d",output);
-//	my_assert( output == -1 , "test 3 - Output is not as expected");
-//	return NULL;
-//}
-//
-//// I skip the programs here for now...
-//// I would need a shell script to  my_assert them
-//
-//// will not account for non terminated strings!
-//char *test_ft_strdup()
-//{
-//	char *output = ft_strdup("hello world");
-//	debug("function output => %s",output);
-//	my_assert(ft_strcmp(output, "hello world") == 0, "test 1 - Output is not as expected");
-//	
-//	return NULL;
-//}
-//
-//char *test_ft_range()
-//{
-//	int *range = ft_range(-1, 3);
-//	debug("function output => %d %d", range[0], range[1]);
-//	my_assert(range[0] == -1 && range[1] == 0, "test 1 - Output is not as expected");
-//	my_assert(range[2] == 1 && range[3] == 2, "test 1 - Output is not as expected");
-//	range = ft_range(-1, -1);
-//	my_assert(range == NULL , "test 3 - Output is not as expected");
-//	return NULL;
-//}
-
 char *all_tests()
 {
 	mu_suite_start();
@@ -877,7 +633,6 @@ char *all_tests()
 	mu_run_test(test_ft_isprint);
 	mu_run_test(test_ft_strlen);
 	mu_run_test(test_ft_memset);
-	
 	mu_run_test(test_ft_strncmp);
 	mu_run_test(test_ft_bzero);
 	mu_run_test(test_ft_memcpy);

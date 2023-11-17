@@ -204,91 +204,6 @@ char *test_ft_split()
 	debug("==== %s \n",res5[0]);
 	my_assert(ft_strncmp(res5[0], "hello", 5) == 0, "Output shd be hello");
 	freesplit(res5); 
-
-	// char **res6 = ft_split("   ", ' ');
-	// debug("==== %s \n",res6[0]);
-	// my_assert(ft_strncmp(res6[0], NULL , 0) == 0, "Output shd be empty");
-
-	// char **res7 = ft_split(NULL, 0);
-	// debug("==== %s \n",res7[0]);
-	// my_assert(ft_strncmp(res7[0], NULL , 0) == 0, "Output shd be empty");
-
-
-
-	// freesplit(res6); 
-	// freesplit(res7); 
-	// freesplit(res7); 
-	//
-	//	char *invalidReadCheck = new char; *invalidReadCheck = 0;
-	//	tab = ft_split(invalidReadCheck, 0);
-	//	/* 10 */ check(tab[0] == NULL); delete invalidReadCheck;
-	//	free(tab);  
-	//
-	//	tab = ft_split("chinimala", ' ');
-	//	/* 11 */ mcheck(tab, sizeof(char *) * 2);
-	//	/* 12 */ check(!strcmp(tab[0], "chinimala"));
-	//	/* 13 */ check(tab[1] == NULL);
-	//	freeTab(tab);  
-	//
-	//	tab = ft_split("", ' ');
-	//	/* 14 */ mcheck(tab, sizeof(char *) * 1);
-	//	/* 15 */ check(tab[0] == NULL);
-	//	freeTab(tab);  
-	//
-	//	/* sguerra- */
-	//	char * splitme = strdup("Tripouille");
-	//	tab = ft_split(splitme, ' ');
-	//	/* 16 */ mcheck(tab, sizeof(char *) * 2);
-	//	/* 17 */ check(!strcmp(tab[0], "Tripouille"));
-	//	/* 18 */ check(tab[1] == NULL);
-	//	free(splitme); freeTab(tab);  
-	//
-	//	splitme = strdup("Tripouille ");
-	//	tab = ft_split(splitme, ' ');
-	//	/* 19 */ mcheck(tab, sizeof(char *) * 2);
-	//	/* 20 */ check(!strcmp(tab[0], "Tripouille"));
-	//	/* 21 */ check(tab[1] == NULL);
-	//	free(splitme); freeTab(tab);  
-	//
-	//	splitme = strdup(" Tripouille");
-	//	tab = ft_split(splitme, ' ');
-	//	/* 22 */ mcheck(tab, sizeof(char *) * 2);
-	//	/* 23 */ check(!strcmp(tab[0], "Tripouille"));
-	//	/* 24 */ check(tab[1] == NULL);
-	//	free(splitme); freeTab(tab);  
-	//
-	//	splitme = strdup(" Tripouille ");
-	//	tab = ft_split(splitme, ' ');
-	//	/* 25 */ mcheck(tab, sizeof(char *) * 2);
-	//	/* 26 */ check(!strcmp(tab[0], "Tripouille"));
-	//	/* 27 */ mcheck(tab[0], strlen("Tripouille") + 1);
-	//	/* 28 */ check(tab[1] == NULL);
-	//	free(splitme); freeTab(tab);  
-	//
-	//	/* wleite */
-	//	splitme = strdup("--1-2--3---4----5-----42");
-	//	tab = ft_split(splitme, '-');
-	//	/* 29 */ mcheck(tab, sizeof(char *) * 7);
-	//	/* 30 */ check(!strcmp(tab[0], "1"));
-	//	/* 31 */ mcheck(tab[0], strlen("1") + 1);
-	//
-	//	/* 32 */ check(!strcmp(tab[1], "2"));
-	//	/* 33 */ mcheck(tab[1], strlen("2") + 1);
-	//
-	//	/* 34 */ check(!strcmp(tab[2], "3"));
-	//	/* 35 */ mcheck(tab[2], strlen("3") + 1);
-	//
-	//	/* 36 */ check(!strcmp(tab[3], "4"));
-	//	/* 37 */ mcheck(tab[3], strlen("4") + 1);
-	//
-	//	/* 38 */ check(!strcmp(tab[4], "5"));
-	//	/* 39 */ mcheck(tab[4], strlen("5") + 1);
-	//
-	//	/* 40 */ check(!strcmp(tab[5], "42"));
-	//	/* 41 */ mcheck(tab[5], strlen("42") + 1);
-	//
-	//	/* 42 */ check(tab[6] == NULL);
-	//	free(splitme); freeTab(tab);  
 	
 	return NULL;
 }
@@ -391,7 +306,6 @@ char *test_ft_striteri()
 
 char *test_ft_putchar_fd()
 {
-	
 	ft_putchar_fd('t', 2);
 	ft_putchar_fd('h', 2);
 	ft_putchar_fd('a', 2);
@@ -440,7 +354,6 @@ char *test_ft_putendl_fd()
 
 char *test_ft_putnbr_fd()
 {
-
 	ft_putnbr_fd(-2147483648, 2);
 	ft_putnbr_fd(2147483647, 2);
 	ft_putnbr_fd(0, 2);

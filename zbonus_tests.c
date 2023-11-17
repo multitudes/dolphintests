@@ -26,14 +26,14 @@ void	del(void *content)
 	(void)content;
 }
 
-
 void f2(void *content)
 {
 	debug("=== content of node => %s\n", (char*)content);
 	
 }
 
-// does not use malloc but it could theoretically 
+// it does not use malloc but it could theoretically 
+// it will be passed to the lstmap
 void *f3(void *content)
 {
 	debug("=== content of node => %s\n", (char*)content);
@@ -212,7 +212,6 @@ char *test_ft_lstclear()
 	return NULL;
 }
 
-//void	ft_lstiter(t_list *lst, void (*f)(void *))
 char *test_ft_lstiter()
 {
 	t_list *l = NULL;
