@@ -1,4 +1,9 @@
 # dolphintests
+
+> “What's so unpleasant about being drunk?"
+"Ask a glass of water!”
+― Douglas Adams, The Hitchhiker's Guide to the Galaxy 
+
 A small suite of tests for the libft project at 42 written in C.
 
 ## Usage
@@ -48,7 +53,10 @@ Tests run: 9
 zbonus_tests PASS
 ```
 
-This is a work in progress and you are reading version 0. To work you need to be in a subdirectory of your libft project.
+Other commands are or course `make clean` and even `make valgrind`. 
+
+This is a work in progress and you are reading version 0. 
+To work you need to be in a subdirectory of your libft project.
 Also it assumes that the name of your library is libft.a and libft_bonus.a if the bonus files are compiled together.
 
 ## Acknoledgements
