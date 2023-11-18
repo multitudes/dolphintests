@@ -1,5 +1,23 @@
 #include "dolphin_tests.h"
 
+/*
+ Part two of the libft project asks to code some C utilities functions.
+ */
+
+/*
+ Parameters of ft_substr:
+ s:  The string from which to create the substring.
+ start:  The start index of the substring in the
+ string ’s’.
+ len:  The maximum length of the substring.
+ Allocates (with malloc(3)) and returns a substring
+ from the string ’s’.
+ The substring begins at index ’start’ and is of
+ maximum size ’len’.
+ ex hello len 5
+ start is 4 -> o
+ possible len is 1 5-4
+ */
 char *test_ft_substr()
 {
 	char test[20] = "hello world!";
@@ -50,6 +68,16 @@ char *test_ft_substr()
 	return NULL;
 }
 
+/*
+ Parameters of ft_strjoin:
+ s1:  The prefix string.
+ s2:  The suffix string.
+ ret The new string.
+ NULL if the allocation fails.
+ Allocates (with malloc(3)) and returns a new
+ string, which is the result of the concatenation
+ of ’s1’ and ’s2’.
+ */
 char *test_ft_strjoin()
 {
 	char test[20] = "Life, ";
@@ -82,6 +110,18 @@ char *test_ft_strjoin()
 	return NULL;
 }
 
+/*
+ Parameters of ft_strtrim:
+ s1:  The string to be trimmed.
+ set:  The reference set of characters to trim.
+ Return value
+ The trimmed string.
+ NULL if the allocation fails.
+ Description
+ Allocates (with malloc(3)) and returns a copy of
+ ’s1’ with the characters specified in ’set’ removed
+ from the beginning and the end of the string.
+ */
 char *test_ft_strtrim()
 {
 	char *test = "hel-?lo ? ?!!? ?~~\t?~?~!-";
@@ -150,6 +190,7 @@ char *test_ft_strtrim()
 	return NULL;
 }
 
+// function to free the memory in ft_split
 void freesplit(char **arr)
 {
 	for (int i = 0; arr[i] != NULL; ++i)
@@ -157,6 +198,19 @@ void freesplit(char **arr)
 	free(arr);
 }
 
+/*
+ Parameters of ft_split:
+ s:  The string to be split.
+ c:  The delimiter character.
+ Return value
+ The array of new strings resulting from the split.
+ NULL if the allocation fails.
+ Allocates (with malloc(3)) and returns an array
+ of strings obtained by splitting ’s’ using the
+ character ’c’ as a delimiter.  The array must end
+ with a NULL pointer.
+ allowed are malloc, free
+ */
 char *test_ft_split()
 {
 	char test[46] = "---hello-and-thanks for-all-the--fish---";
@@ -204,7 +258,19 @@ char *test_ft_split()
 	return NULL;
 }
 
-// this version of itoa needs to be freed
+/*
+ Parameters of ft_itoa:
+ n:  the integer to convert.
+ Return value
+ The string representing the integer.
+ NULL if the allocation fails.
+ Description
+ Allocates (with malloc(3)) and returns a string
+ representing the integer received as an argument.
+ Negative numbers must be handled.
+ 
+ this version of itoa needs to be freed
+ */
 char *test_ft_itoa()
 {
 	// int max is still 2147483647 on a 64 bit machine
@@ -233,7 +299,10 @@ char *test_ft_itoa()
 	return NULL;
 }
 
-//declare f as pointer to function (unsigned int, char) returning char
+/*
+declare f as pointer to function (unsigned int, char) returning char
+to be used in ft_strmapi below
+ */
 char f(unsigned int a, char c)
 {
 	char	e;
@@ -245,18 +314,30 @@ char f(unsigned int a, char c)
 	return e;
 }
 
-// this version needs to be freed
+/*
+ Parameters of ft_strmapi:
+ s:  The string on which to iterate.
+ f:  The function to apply to each character.
+ Return value
+ The string created from the successive applications
+ of ’f’.
+ Returns NULL if the allocation fails.
+ Applies the function ’f’ to each character of the
+ string ’s’, and passing its index as first argument
+ to create a new string (with malloc(3)) resulting
+ from successive applications of ’f’.
+ this version uses malloc and the result needs to be freed
+ */
 char *test_ft_strmapi()
 {
 	char s[40] = "hello-and-thanks for-all-the-fish";
 	char *test = ft_strmapi(s, f);
-//	eeele-ane-ehanesefereaeleteeefese
+
 	debug("====test ==  %s",test);
 	my_assert(ft_strncmp(test, "eeele-ane-ehanesefereaeleteeefese", 30) == 0, "Output shd be 0");free(test);
 	
 	char s2[40] = "";
 	test = ft_strmapi(s2, f);
-	//	eeele-ane-ehanesefereaeleteeefese
 	debug("====test ==  %s",test);
 	my_assert(ft_strncmp(test, "", 1) == 0, "Output shd be 0");free(test);
 
@@ -268,22 +349,32 @@ char *test_ft_strmapi()
 	return NULL;
 }
 
-//declare f as pointer to function (unsigned int, char) returning char
-void f2(unsigned int a, char* c);
-
+/*
+declaring f as pointer to function (unsigned int, char) returning char
+To use below in ft_striteri
+ */
 void f2(unsigned int a, char* c)
 {
 	if ((a % 2) || (*c == 'a'))
-		 ;
+		 ; // do nothing
 	else
 		*c = 'e';
 }
 
+/*
+ Parameters
+ s:  The string on which to iterate.
+ f:  The function to apply to each character.
+ Description
+ Applies the function ’f’ on each character of
+ the string passed as argument, passing its index
+ as first argument.  Each character is passed by
+ address to ’f’ to be modified if necessary.
+ */
 char *test_ft_striteri()
 {
 	char s[40] = "hello-and-thanks for-all-the-fish";
 	ft_striteri(s, f2);
-//	eeele-ane-ehanesefereaeleteeefese
 	debug("====test ==  %s",s);
 	my_assert(ft_strncmp(s, "eeele-ane-ehanesefereaeleteeefese", 30) == 0, "Output shd be 0");
 	
@@ -300,6 +391,16 @@ char *test_ft_striteri()
 	return NULL;
 }
 
+/*
+ this test will print to the log file (stderr -> 2)
+ 
+ Parameters of ft_putchar_fd:
+ c:  The character to output.
+ fd:  The file descriptor on which to write.
+ Outputs the character ’c’ to the given file
+ descriptor.
+ allowed functions: write
+ */
 char *test_ft_putchar_fd()
 {
 	ft_putchar_fd('t', 2);
@@ -329,6 +430,15 @@ char *test_ft_putchar_fd()
 	return NULL;
 }
 
+/*
+ this test will print to the log file (stderr -> 2)
+ 
+ Parameters of ft_putstr_fd:
+ s:  The string to output.
+ fd:  The file descriptor on which to write.
+ Outputs the string ’s’ to the given file
+ descriptor.
+ */
 char *test_ft_putstr_fd()
 {
 	ft_putstr_fd("hello-and-thanks for-all-the-fish", 2);
@@ -337,6 +447,15 @@ char *test_ft_putstr_fd()
 	return NULL;
 }
 
+/*
+ this test will print to the log file (stderr -> 2)
+ 
+ Parameters of ft_putendl_fd:
+ s:  The string to output.
+ fd:  The file descriptor on which to write.
+ Outputs the string ’s’ to the given file descriptor
+ followed by a newline.
+ */
 char *test_ft_putendl_fd()
 {
 	ft_putendl_fd("2147483648", 2);
@@ -348,6 +467,13 @@ char *test_ft_putendl_fd()
 	return NULL;
 }
 
+/*
+ this test will print to the log file (stderr -> 2)
+ 
+ Parameters of ft_putnbr_fd:
+ Outputs the integer ’n’ to the given file
+ descriptor.
+ */
 char *test_ft_putnbr_fd()
 {
 	ft_putnbr_fd(-2147483648, 2);

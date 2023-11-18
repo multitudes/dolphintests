@@ -1,9 +1,14 @@
 #include "dolphin_tests.h"
 
+/*
+ This bonus part is all about lists!
+ */
+
 char *test1 = "hello world!";
 char *test2 = "Another hello world!";
 char *test3 = "A third hello world!";
 
+// Convenience functions for the tests
 void freeList(t_list *head) {
 	if (head) 
 		freeList(head->next); 
@@ -34,6 +39,12 @@ void *f3(void *content)
 	return (content);
 }
 
+/*
+ Allocates (with malloc(3)) and returns a new node.
+ The member variable ’content’ is initialized with
+ the value of the parameter ’content’.  The variable
+ ’next’ is initialized to NULL.
+ */
 char *test_ft_lstnew()
 {
 	t_list *l = ft_lstnew(test1);
@@ -53,6 +64,16 @@ char *test_ft_lstnew()
 	return NULL;
 }
 
+/*
+ lst:  The address of a pointer to the first link of
+ a list.
+ new:  The address of a pointer to the node to be
+ added to the list.
+ Adds the node ’new’ at the beginning of the list.
+ node->next = list->first;
+ list->first->prev = node;
+ list->first = node;
+ */
 char *test_ft_lstadd_front()
 {
 	t_list *l = ft_lstnew(test1);
@@ -80,7 +101,13 @@ char *test_ft_lstadd_front()
 	return NULL;
 }
 
-
+/*
+ Counts the number of nodes in a list.
+ Parameters
+ lst:  The beginning of the list.
+ Returns:
+ The length of the list
+ */
 char *test_ft_lstsize()
 {
 	t_list *l = ft_lstnew(test1);
@@ -107,6 +134,12 @@ char *test_ft_lstsize()
 	return NULL;
 }
 
+/*
+ Parameters
+ lst:  The beginning of the list.
+ Returns 
+ the last node of the list.
+ */
 char *test_ft_lstlast()
 {
 	t_list *l = ft_lstnew(test1);
@@ -123,6 +156,15 @@ char *test_ft_lstlast()
 	return NULL;
 }
 
+/*
+ adds the node ’new’ at the end of the list.
+ Parameters
+ new:  The address of a pointer to the node to be
+ added to the list.
+ Returns:
+ lst:  The address of a pointer to the first link of
+ a list.
+ */
 char *test_ft_lstadd_back()
 {
 	t_list *l = ft_lstnew(test1);
@@ -161,6 +203,17 @@ char *test_ft_lstadd_back()
 	return NULL;
 }
 
+/*
+ Takes as a parameter a node and frees the memory of
+ the node’s content using the function ’del’ given
+ as a parameter and free the node.  The memory of
+ ’next’ must not be freed.
+ 
+ Parameters
+ lst:  The node to free.
+ del:  The address of the function used to delete
+ the content.
+ */
 char *test_ft_lstdelone()
 {
 	t_list *new = ft_lstnew(test1);
@@ -176,7 +229,18 @@ char *test_ft_lstdelone()
 	return NULL;
 }
 
-
+/*
+ Deletes and frees the given node and every
+ successor of that node, using the function ’del’
+ and free(3).
+ Finally, the pointer to the list must be set to
+ NULL.
+ 
+ Parameters:
+ lst:  The address of a pointer to a node.
+ del:  The address of the function used to delete
+ the content of the node.
+ */
 char *test_ft_lstclear()
 {
 	t_list *l = NULL;
@@ -206,6 +270,16 @@ char *test_ft_lstclear()
 	return NULL;
 }
 
+
+/*
+ Iterates the list ’lst’ and applies the function
+ ’f’ on the content of each node.
+ 
+ Parameters:
+ lst:  The address of a pointer to a node.
+ f:  The address of the function used to iterate on
+ the list.
+ */
 char *test_ft_lstiter()
 {
 	t_list *l = NULL;
@@ -247,12 +321,29 @@ char *test_ft_lstiter()
 	return NULL;
 }
 
+// util function to be passed to ft_lstmap
 void * addOneMalloc(void * p) {
 	void *r = malloc(sizeof(int)); 
 	*(int*)r = *(int*)p + 1; 
 	return (r);
 }
 
+/*
+ Iterates the list ’lst’ and applies the function
+ ’f’ on the content of each node. Creates a new
+ list resulting of the successive applications of
+ the function ’f’. The ’del’ function is used to
+ delete the content of a node if needed.
+ 
+ Parameters:
+ lst: The address of a pointer to a node.
+ f: The address of the function used to iterate on
+ the list.
+ del: The address of the function used to delete
+ the content of a node if needed
+ The new list.
+ NULL if the allocation fails
+ */
 char *test_ft_lstmap()
 {
 	t_list *l = NULL;
