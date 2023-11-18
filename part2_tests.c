@@ -1,8 +1,4 @@
-#include "dbg.h"
-#include "../libft.h"
-#include <string.h>
-#include <stdio.h>
-#include <limits.h>
+#include "dolphin_tests.h"
 
 char *test_ft_substr()
 {

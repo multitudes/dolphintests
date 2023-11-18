@@ -1,10 +1,4 @@
-#include "dbg.h"
-#include "../libft.h"
-#include <string.h>
-#include <stdio.h>
-#include <limits.h>
-
-#include "../_bonus.h"
+#include "dolphin_tests.h"
 
 char *test1 = "hello world!";
 char *test2 = "Another hello world!";
