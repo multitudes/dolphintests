@@ -1,8 +1,13 @@
 #include "dolphin_tests.h"
 
+/*
+ Part one of the libft project recreates standard C functions.
+ The original ones can be found in the man pages
+ */
+
+// ft_isalpha should return 1 if the char is a alphabetical character
 char *test_ft_isalpha()
 {
-
 	my_assert(ft_isalpha(65) == 1, "Output shd be one");
 	my_assert(ft_isalpha(70) == 1, "Output shd be one");
 	my_assert(ft_isalpha(90) == 1, "Output shd be one");
@@ -18,6 +23,7 @@ char *test_ft_isalpha()
 	return NULL;
 }
 
+// ft_isdigit should return 1 if the char is a digit
 char *test_ft_isdigit()
 {
 	my_assert(ft_isdigit(50) == 1, "Output shd be one");
@@ -30,9 +36,10 @@ char *test_ft_isdigit()
 	my_assert(ft_isdigit('0'+1) == 1, "Output shd be one");
 	my_assert(ft_isdigit('9'+2) == 0, "Output shd be zero");
 	my_assert(ft_isdigit(255) == 0, "Output shd be zero");
+	
 	return NULL;
 }
-
+// ft_isalnum should return 1 if the char is alphanumeric
 char *test_ft_isalnum()
 {
 	my_assert(ft_isalnum(48) == 1, "Output shd be one");
@@ -51,18 +58,20 @@ char *test_ft_isalnum()
 	return NULL;
 }
 
+// ft_isascii should return 1 if the char is in the ascii table
 char *test_ft_isascii()
 {
 	my_assert(ft_isascii(0) == 1, "Output shd be one");
 	my_assert(ft_isascii(127) == 1, "Output shd be one");
 	my_assert(ft_isdigit(255) == 0, "Output shd be zero");
 	my_assert(ft_isascii(128) == 0, "Output shd be zero");
+	
 	return NULL;
 }
 
+// ft_isprint should return 1 if the char is in the ascii table
 char *test_ft_isprint()
 {
-
 	my_assert(ft_isprint(32) == 1, "Output shd be one");
 	my_assert(ft_isprint(126) == 1, "Output shd be one");
 	my_assert(ft_isprint(50) == 1, "Output shd be one");
@@ -74,6 +83,7 @@ char *test_ft_isprint()
 	return NULL;
 }
 
+// ft_strlen returns the length of the string
 char *test_ft_strlen()
 {
 	my_assert(strlen("hello") == 5, "Output shd be 5");
@@ -82,6 +92,8 @@ char *test_ft_strlen()
 	return NULL;
 }
 
+// ft_memset parameters are a pointer to a memory location which will be
+// overwritten with a char (passed as a second param) n times (third param)
 char *test_ft_memset()
 {
 	char b[6] = "hello";
@@ -92,6 +104,7 @@ char *test_ft_memset()
 	return NULL;
 }
 
+// ft_bzero is like ft_memset but writes zeroes.
 char *test_ft_bzero()
 {
 	char b[6] = "hello";
@@ -104,6 +117,8 @@ char *test_ft_bzero()
 	return NULL;
 }
 
+// ft_memcpy copies n chars from source to dest
+// doesnt check for overlapping
 char *test_ft_memcpy()
 {
 	char dst[6] = "hello";
@@ -114,11 +129,10 @@ char *test_ft_memcpy()
 	
 	debug("====memcpy should be %s \n",(char *)memcpy((void *)dst, (void *)src, n));
 
-	
 	return NULL;
 }
 
-// it is like the previous but strings can overlap
+// ft_memmove it is like the previous ft_memcpy but strings can overlap safely
 // tested with overlapping strings
 char *test_ft_memmove()
 {
@@ -138,9 +152,8 @@ char *test_ft_memmove()
 	return NULL;
 }
 
-/*
- size_t	ft_strlcpy(char * restrict dst, const char * restrict src, size_t dstsize)
- */
+// the signature is
+//ft_strlcpy(char * restrict dst, const char * restrict src, size_t dstsize)
 char *test_ft_strlcpy()
 {
 	char dst[6] = "hello";
@@ -189,6 +202,8 @@ char *test_ft_strlcpy()
 	return NULL;
 }
 
+// signature is size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+// check man page strlcat - this one is a bit more complicated to explain
 char *test_ft_strlcat()
 {
 	char dst[20] = "ab";
@@ -266,10 +281,10 @@ char *test_ft_strlcat()
 	my_assert(res == 2, "res = 2 because (n > destlen) ->return dstlen + srclen");
 	my_assert(ft_strncmp(dst8, "ab", 2) == 0, "Output shd be 0");
 
-
 	return NULL;
 }
 
+// ft_toupper takes a char and outputs the upper char in the alphabet
 char *test_ft_toupper()
 {
 	for (int c = 0; c<=255; c++)
@@ -288,6 +303,7 @@ char *test_ft_toupper()
 	return NULL;
 }
 
+// ft_tolower takes a char and outputs the lower corr char in the alphabet
 char *test_ft_tolower()
 {
 	for (int c = 0; c<=127; c++)
@@ -306,6 +322,14 @@ char *test_ft_tolower()
 	return NULL;
 }
 
+// signature char	*ft_strchr(const char *s, int c)
+/*
+ The strchr() function locates the first occurrence of
+ c (converted to a char) in the string pointed to by
+ s.  The terminating null character is considered
+ to be part of the string; therefore if c is ‘\0’, the
+ functions locate the terminating ‘\0’.
+ */
 char *test_ft_strchr()
 {
 	int c = 88;
@@ -334,6 +358,10 @@ char *test_ft_strchr()
 	return NULL;
 }
 
+/*
+ The strrchr() function is identical to strchr(),
+ except it locates the last occurrence of c.
+ */
 char *test_ft_strrchr()
 {
 	int c = 88; // X
@@ -368,6 +396,17 @@ char *test_ft_strrchr()
 	return NULL;
 }
 
+/*
+The strncmp() function compares not more than n characters.
+Because strncmp() is designed for comparing strings rather than binary data,
+characters that appear after a ‘\0’ character are not compared.
+RETURN VALUES
+The strcmp() and strncmp() functions return an integer greater than,
+equal to, or less than 0, according as the string s1 is greater than,
+equal to, or less than the string s2.
+The comparison is done using unsigned characters, so that ‘\200’
+is greater than ‘\0’.
+*/
 char *test_ft_strncmp()
 {
 	my_assert(ft_strncmp("hello", "hellA", 6) == 46, "Output shd be 46");
@@ -398,6 +437,16 @@ char *test_ft_strncmp()
 }
 
 //void	*ft_memchr(const void *s, int c, size_t n)
+/*
+ void *
+ memchr(const void *s, int c, size_t n);
+ DESCRIPTION
+ The memchr() function locates the first occurrence of c
+ (converted to an unsigned char) in string s.
+ RETURN VALUES
+ The memchr() function returns a pointer to the byte located, or NULL
+ if no such byte exists within n bytes.
+ */
 char *test_ft_memchr()
 {
 	int c = 88;
@@ -415,7 +464,6 @@ char *test_ft_memchr()
 	char *res4 = memchr(s, c, 5);
 	my_assert(ft_strncmp(res3, "llo", 3) == 0, "wrong output");
 	my_assert(ft_strncmp(res4, "llo", 3) == 0, "wrong output");
-	
 	
 	char s2[] = {0, 1, 2 ,3 ,4 ,5};
 	my_assert(ft_memchr(s2, 0, 0) == NULL, "wrong output");  
@@ -449,6 +497,17 @@ char *test_ft_memcmp()
 	return NULL;
 }
 
+/*
+ The strnstr() function locates the first occurrence of the null-terminated
+ string needle in the string haystack, where not more than len characters
+ are searched.  Characters that appear after a ‘\0’ character
+ are not searched.  Since the strnstr() function is a FreeBSD specific API,
+ it should only be used when portability is not a concern.
+ If needle is an empty string, haystack is returned; if needle occurs nowhere
+ in haystack, NULL is returned;
+ otherwise a pointer to the first character of the first occurrence of needle
+ is returned.
+ */
 char *test_ft_strnstr()
 {
 	char haystk[20] = "hello world";
@@ -537,10 +596,16 @@ char *test_ft_atoi()
 	return NULL;
 }
 
+// max size possible to be allocated should be no more than 18446744073709551615UL
+// because this is the max value of an unsigned long on 64 bit machines
+// and size_t is a UL.
+// Apparently in such cases where calloc would return null, sometimes it actually returns
+// a pointer but it should not be used.
+// But think about that passing a neg number might try to allocate a
+// few terabytes..
 char *test_ft_calloc()
 {
 	debug("%lu ============ \n",SIZE_MAX );
-	// 18446744073709551615UL
 	void *test = NULL;
 	test = ft_calloc(1, 1);
 	my_assert(test != NULL, "Output shd be not be null");
@@ -579,7 +644,8 @@ char *test_ft_calloc()
 	my_assert(calloc(-5, -5) == NULL, "wrong output"); 
 	my_assert(ft_calloc(-5, -5) == NULL, "wrong output"); 
 
-// I seem to get random output here from my mallocs... 
+	// I seem to get random output here from my mallocs... unsurprisingly!
+	// so I think these tests are not reliable
 	// p = ft_calloc(-5, 0);
 	// debug("--- pointer ft calloc 0 -5 -> %p", p);
 	// my_assert(p != NULL, "wrong output"); free(p);
@@ -596,7 +662,8 @@ char *test_ft_calloc()
 	return NULL;
 }
 
-//ft_strdup(const char *s1)
+// signature ft_strdup(const char *s1)
+// copies a string. Needs to be freed!
 char *test_ft_strdup()
 {
 	char test[20] = "hello world!";
@@ -613,8 +680,6 @@ char *test_ft_strdup()
 
 	return NULL;
 }
-
-
 
 char *all_tests()
 {
