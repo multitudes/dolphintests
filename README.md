@@ -1,8 +1,6 @@
 # dolphintests
 
-> “What's so unpleasant about being drunk?"
-"Ask a glass of water!”
-― Douglas Adams, The Hitchhiker's Guide to the Galaxy 
+> “For instance, on the planet Earth, man had always assumed that he was more intelligent than dolphins because he had achieved so much—the wheel, New York, wars and so on—whilst all the dolphins had ever done was muck about in the water having a good time. But conversely, the dolphins had always believed that they were far more intelligent than man—for precisely the same reasons.” ― Douglas Adams, The Hitchhiker's Guide to the Galaxy 
 
 A small suite of tests for the libft project at 42 written in C.
 
