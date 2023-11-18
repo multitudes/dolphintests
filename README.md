@@ -55,7 +55,9 @@ Tests run: 9
 zbonus_tests PASS
 ```
 
-Other commands are or course `make clean` and even `make valgrind`. 
+Other commands are or course `make clean` and even `make valgrind` (on a Linux system). 
+
+It will create a test log file with the debugging output of the tests. 
 
 To work you need to be in a subdirectory of your libft project.
 Also it assumes that the name of your library is libft.a and libft_bonus.a if the bonus files are compiled together.
