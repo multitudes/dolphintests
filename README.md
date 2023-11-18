@@ -4,10 +4,12 @@
 
 A small suite of tests for the libft project at 42 written in C.
 
+## The project
+The first project at 42 is to re-code a set of the libc functions, as defined in their man. In part 2 there some additional functions to create and at the end a bonus part with linked lists. 
+
 ## Usage
 No installation needed. 
-Just download the repo and copy it in your libft project folder. Compile your library first, 
-then cd into the dolphintest folder and run `make`. The output should be similar to this one below:
+Just download the repo and copy it in your libft project folder. Compile your library first with its own makefile. Then cd into the dolphintest folder cloned from GitHub and run `make` again. The output should be similar to this one below:
 
 ```c
 make      
@@ -26,9 +28,11 @@ ALL TESTS PASSED
 Tests run: 11
 part2_tests PASS
 ```
-Or if you want to test the bonus functions run `make bonus` instead. But this assumes that you compiled already 
-your library with the bonus functions and that your library name is libft_bonus.a.
-example:
+
+Or if you want to test the bonus functions run `make bonus` instead. But this assumes that you compiled already your library with the bonus functions and that your library name is libft_bonus.a.
+
+Example:
+
 ```c
 make bonus
 cc -Wall -Wextra -Werror    zbonus_tests.c  -lm -lbsd ../libft_bonus.a -o zbonus_tests
@@ -53,7 +57,6 @@ zbonus_tests PASS
 
 Other commands are or course `make clean` and even `make valgrind`. 
 
-This is a work in progress and you are reading version 0. 
 To work you need to be in a subdirectory of your libft project.
 Also it assumes that the name of your library is libft.a and libft_bonus.a if the bonus files are compiled together.
 
