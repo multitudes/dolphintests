@@ -27,22 +27,12 @@
         "[ERROR] (%s:%d: errno: %s) " M "\n", __FILE__, __LINE__,\
         clean_errno(), ##__VA_ARGS__)
 
-#define log_warn(M, ...) fprintf(stderr,\
-        "[WARN] (%s:%d: errno: %s) " M "\n",\
-        __FILE__, __LINE__, clean_errno(), ##__VA_ARGS__)
-
-#define log_info(M, ...) fprintf(stderr, "[INFO] (%s:%d) " M "\n",\
-        __FILE__, __LINE__, ##__VA_ARGS__)
-
-#define check(A, M, ...) if(!(A)) {\
-    log_err(M, ##__VA_ARGS__); errno=0; goto error; }
-
-// this is collated from another file - for the test suite
-#define mu_suite_start() char *message = NULL
+// for the test suite
+#define suite_start() char *message = NULL
 
 #define my_assert(test, message) if (!(test)) {\
 log_err(message); return message; }
-#define mu_run_test(test) debug("\n-----%s", " " #test); \
+#define run_test(test) debug("\n-----%s", " " #test); \
 message = test(); tests_run++; if (message) return message;
 
 #define RUN_TESTS(name) int main(int argc, char *argv[]) {\

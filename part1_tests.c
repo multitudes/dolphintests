@@ -683,31 +683,31 @@ char *test_ft_strdup()
 
 char *all_tests()
 {
-	mu_suite_start();
+	suite_start();
 	
-	mu_run_test(test_ft_isalpha);
-	mu_run_test(test_ft_isdigit);
-	mu_run_test(test_ft_isalnum);
-	mu_run_test(test_ft_isascii);
-	mu_run_test(test_ft_isprint);
-	mu_run_test(test_ft_strlen);
-	mu_run_test(test_ft_memset);
-	mu_run_test(test_ft_strncmp);
-	mu_run_test(test_ft_bzero);
-	mu_run_test(test_ft_memcpy);
-	mu_run_test(test_ft_memmove);
-	mu_run_test(test_ft_strlcpy);
-	mu_run_test(test_ft_strlcat);
-	mu_run_test(test_ft_toupper);
-	mu_run_test(test_ft_tolower);
-	mu_run_test(test_ft_strchr);
-	mu_run_test(test_ft_strrchr);
-	mu_run_test(test_ft_memchr);
-	mu_run_test(test_ft_memcmp);
-	mu_run_test(test_ft_strnstr);
-	mu_run_test(test_ft_atoi);
-	mu_run_test(test_ft_calloc);
-	mu_run_test(test_ft_strdup);
+	run_test(test_ft_isalpha);
+	run_test(test_ft_isdigit);
+	run_test(test_ft_isalnum);
+	run_test(test_ft_isascii);
+	run_test(test_ft_isprint);
+	run_test(test_ft_strlen);
+	run_test(test_ft_memset);
+	run_test(test_ft_strncmp);
+	run_test(test_ft_bzero);
+	run_test(test_ft_memcpy);
+	run_test(test_ft_memmove);
+	run_test(test_ft_strlcpy);
+	run_test(test_ft_strlcat);
+	run_test(test_ft_toupper);
+	run_test(test_ft_tolower);
+	run_test(test_ft_strchr);
+	run_test(test_ft_strrchr);
+	run_test(test_ft_memchr);
+	run_test(test_ft_memcmp);
+	run_test(test_ft_strnstr);
+	run_test(test_ft_atoi);
+	run_test(test_ft_calloc);
+	run_test(test_ft_strdup);
 	
 	return NULL;
 }

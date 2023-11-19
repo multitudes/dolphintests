@@ -432,17 +432,17 @@ char *test_ft_lstmap()
 // you want to focus on some funtctions to test
 char *all_tests()
 {
-	mu_suite_start();
+	suite_start();
 	
-	mu_run_test(test_ft_lstnew);
-	mu_run_test(test_ft_lstadd_front);
-	mu_run_test(test_ft_lstsize);
-	mu_run_test(test_ft_lstlast);
-	mu_run_test(test_ft_lstadd_back);
-	mu_run_test(test_ft_lstdelone);
-	mu_run_test(test_ft_lstclear);
-	mu_run_test(test_ft_lstiter);
-	mu_run_test(test_ft_lstmap);	
+	run_test(test_ft_lstnew);
+	run_test(test_ft_lstadd_front);
+	run_test(test_ft_lstsize);
+	run_test(test_ft_lstlast);
+	run_test(test_ft_lstadd_back);
+	run_test(test_ft_lstdelone);
+	run_test(test_ft_lstclear);
+	run_test(test_ft_lstiter);
+	run_test(test_ft_lstmap);	
 	
 	return NULL;
 }

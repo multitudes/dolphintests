@@ -487,19 +487,19 @@ char *test_ft_putnbr_fd()
 
 char *all_tests()
 {
-	mu_suite_start();
+	suite_start();
 	
-	mu_run_test(test_ft_substr);
-	mu_run_test(test_ft_strjoin);
-	mu_run_test(test_ft_strtrim);
-	mu_run_test(test_ft_split);
-	mu_run_test(test_ft_itoa);
-	mu_run_test(test_ft_strmapi);
-	mu_run_test(test_ft_striteri);
-	mu_run_test(test_ft_putchar_fd);
-	mu_run_test(test_ft_putstr_fd);
-	mu_run_test(test_ft_putendl_fd);
-	mu_run_test(test_ft_putnbr_fd);
+	run_test(test_ft_substr);
+	run_test(test_ft_strjoin);
+	run_test(test_ft_strtrim);
+	run_test(test_ft_split);
+	run_test(test_ft_itoa);
+	run_test(test_ft_strmapi);
+	run_test(test_ft_striteri);
+	run_test(test_ft_putchar_fd);
+	run_test(test_ft_putstr_fd);
+	run_test(test_ft_putendl_fd);
+	run_test(test_ft_putnbr_fd);
 	
 	return NULL;
 }
