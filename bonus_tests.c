@@ -8,31 +8,41 @@ char *test1 = "hello world!";
 char *test2 = "Another hello world!";
 char *test3 = "A third hello world!";
 
-// Convenience functions for the tests
+// Convenience functions to free the lists used in the tests
 void freeList(t_list *head) {
 	if (head) 
 		freeList(head->next); 
 	free(head);
 }
 
-void addOne(void * p) 
+// util function to be passed to ft_lstmap
+void addOne(void * p)
 {
 	++*(int*)p;
 }
 
+// util function to be passed to ft_lstmap
+void * addOneMalloc(void * p) {
+	void *r = malloc(sizeof(int));
+	*(int*)r = *(int*)p + 1;
+	return (r);
+}
+
+// util function to be passed to ft_lstmap
 void	del(void *content)
 {	
 	(void)content;
 }
 
+// A pointer to this function will be passed to the lstmap
 void f2(void *content)
 {
 	debug("=== content of node => %s\n", (char*)content);
 	
 }
 
-// it does not use malloc but it could theoretically 
-// it will be passed to the lstmap
+// A pointer to this function be passed to the lstmap
+// (It does not use malloc)
 void *f3(void *content)
 {
 	debug("=== content of node => %s\n", (char*)content);
@@ -40,6 +50,9 @@ void *f3(void *content)
 }
 
 /*
+ Signature of the function to test:
+ t_list * ft_lstnew(void const *content, size_t content_size);
+ 
  Allocates (with malloc(3)) and returns a new node.
  The member variable ’content’ is initialized with
  the value of the parameter ’content’.  The variable
@@ -65,6 +78,9 @@ char *test_ft_lstnew()
 }
 
 /*
+ Signature of the function to test:
+ 
+ Parameters
  lst:  The address of a pointer to the first link of
  a list.
  new:  The address of a pointer to the node to be
@@ -102,6 +118,8 @@ char *test_ft_lstadd_front()
 }
 
 /*
+ Signature of the function to test:
+ 
  Counts the number of nodes in a list.
  Parameters
  lst:  The beginning of the list.
@@ -135,6 +153,8 @@ char *test_ft_lstsize()
 }
 
 /*
+ Signature of the function to test:
+ 
  Parameters
  lst:  The beginning of the list.
  Returns 
@@ -157,6 +177,8 @@ char *test_ft_lstlast()
 }
 
 /*
+ Signature of the function to test:
+ 
  adds the node ’new’ at the end of the list.
  Parameters
  new:  The address of a pointer to the node to be
@@ -204,6 +226,8 @@ char *test_ft_lstadd_back()
 }
 
 /*
+ Signature of the function to test:
+ 
  Takes as a parameter a node and frees the memory of
  the node’s content using the function ’del’ given
  as a parameter and free the node.  The memory of
@@ -230,6 +254,8 @@ char *test_ft_lstdelone()
 }
 
 /*
+ Signature of the function to test:
+ 
  Deletes and frees the given node and every
  successor of that node, using the function ’del’
  and free(3).
@@ -272,6 +298,8 @@ char *test_ft_lstclear()
 
 
 /*
+ Signature of the function to test:
+ 
  Iterates the list ’lst’ and applies the function
  ’f’ on the content of each node.
  
@@ -321,14 +349,9 @@ char *test_ft_lstiter()
 	return NULL;
 }
 
-// util function to be passed to ft_lstmap
-void * addOneMalloc(void * p) {
-	void *r = malloc(sizeof(int)); 
-	*(int*)r = *(int*)p + 1; 
-	return (r);
-}
-
 /*
+ Signature of the function to test:
+ 
  Iterates the list ’lst’ and applies the function
  ’f’ on the content of each node. Creates a new
  list resulting of the successive applications of
@@ -405,6 +428,8 @@ char *test_ft_lstmap()
 	return NULL;
 }
 
+// Feel free to deselect here some of the tests if
+// you want to focus on some funtctions to test
 char *all_tests()
 {
 	mu_suite_start();
@@ -422,5 +447,7 @@ char *all_tests()
 	return NULL;
 }
 
+// Macro defined in dolphin_tests header
+// works like a main for this file
 RUN_TESTS(all_tests);
 

@@ -6,14 +6,12 @@
 # include <string.h>
 # include <stdlib.h>
 # include <assert.h>
-# include "../libft.h"
-# include <string.h>
-# include <stdio.h>
 # include <limits.h>
+# include "../libft.h"
+
 # if __linux__
 #  include <bsd/string.h>
 # endif
-//#define INT_MAX 2147483647
 
 // These are the debug macros by Zed Shaw
 #ifdef NDEBUG
@@ -38,14 +36,6 @@
 
 #define check(A, M, ...) if(!(A)) {\
     log_err(M, ##__VA_ARGS__); errno=0; goto error; }
-
-#define sentinel(M, ...)  { log_err(M, ##__VA_ARGS__);\
-    errno=0; goto error; }
-
-#define check_mem(A) check((A), "Out of memory.")
-
-#define check_debug(A, M, ...) if(!(A)) { debug(M, ##__VA_ARGS__);\
-    errno=0; goto error; }
 
 // this is collated from another file - for the test suite
 #define mu_suite_start() char *message = NULL
