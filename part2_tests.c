@@ -162,7 +162,7 @@ char *test_ft_strtrim()
 	test = "";
 	set = "abc";
 	res = ft_strtrim(test, set);
-	debug("==== %s \n",res) ;
+	debug("==== shd be empty |%s|\n",res) ;
 	my_assert(ft_strncmp(res, "", 0) == 0, "Output shd be nothing");
 	free(res);
 
