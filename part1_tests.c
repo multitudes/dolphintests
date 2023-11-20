@@ -97,10 +97,14 @@ char *test_ft_strlen()
 char *test_ft_memset()
 {
 	char b[6] = "hello";
-	ft_memset((void *)b, 55, 5);
+	char b2[6] = "hello";
+	ft_memset((void *)b, 55, sizeof(b));
 	my_assert(ft_strncmp(b, "77777", 5) == 0, "Output shd be 0");
 	
-	debug("==== %s \n", (char *)b);
+	debug("====ft_memset returns: %s \n", (char *)b);
+	debug("====memset returns: %s \n", (char *)memset((void *)b2, 55, sizeof(b2)));
+	// error 'memset' will always overflow;
+	// debug("====memset returns: %s \n", (char *)memset((void *)b2, 55, 8));
 	return NULL;
 }
 
