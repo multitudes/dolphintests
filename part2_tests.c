@@ -388,6 +388,19 @@ char *test_ft_striteri()
 	debug("====test ==  %s",s3);
 	my_assert(ft_strncmp(s3, "eh", 2) == 0, "Output shd be 0");
 
+// For ft_strmapi, in /francinette/tests/libft/fsoares/test_strmapi.c:
+
+// Error in test 1: ft_strmapi("", {(i, c) => i + c}): not enough memory allocated, needed: 1, reserved: 0
+// Could not find the corresponding allocation or the pointer 0x556a9a852890
+// Error in test 1: ft_strmapi("", {(i, c) => i + c}): 
+// Memory leak: 0x556a9a8528b0 - 4096 bytes
+// You failed to free the memory allocated at:
+// Error in test 2: ft_strmapi("abcd0 ", {(i, c) => i + c}): not enough memory allocated, needed: 7, reserved: 0
+// Could not find the corresponding allocation or the pointer 0x556a9a8538c0
+// Error in test 3: ft_strmapi("abcdfsdfs", {(i, c) => '0'}): not enough memory allocated, needed: 10, reserved: 0
+// Could not find the corresponding allocation or the pointer 0x556a9a8538e0
+
+
 	return NULL;
 }
 

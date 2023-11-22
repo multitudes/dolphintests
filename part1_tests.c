@@ -436,6 +436,8 @@ char *test_ft_strncmp()
 	my_assert(ft_strncmp("", "1", 1) < 0, "wrong output");  
 	my_assert(ft_strncmp("1", "", 1) > 0, "wrong output");  
 	my_assert(ft_strncmp("", "", 1) == 0, "wrong output");
+	my_assert(ft_strncmp("test\200", "test\0", 5) > 0;
+	my_assert(strncmp("test\200", "test\0", 5) > 0;
 	
 	return NULL;
 }
