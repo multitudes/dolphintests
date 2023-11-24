@@ -6,7 +6,7 @@ TESTS=$(patsubst %.c,%,$(TEST_SRC))
 TESTS_BONUS=$(patsubst %.c,%,$(TEST_SRC_BONUS))
 
 NAME=../libft.a
-NAME_BONUS=../libft_bonus.a
+NAME_BONUS=../libft.a	
 
 LDLIBS=-lm
 UNAME = $(shell uname -s)
